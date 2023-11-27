@@ -19,11 +19,24 @@
     <div class="filter-bar">
         <label for="filter">Filtrer par:</label>
         <select id="filter">
+            <option value="default">Nouveautés</option>
             <option value="price_asc">Prix: Croissant</option>
             <option value="price_desc">Prix: Décroissant</option>
             <!-- Autres options de filtrage -->
         </select>
+    
+        <!-- Ajoutez les cases à cocher pour le genre -->
+        <div class="gender-filter">
+            <label>Genre:</label>
+            <input type="checkbox" id="genre_femme" name="genre" value="femme">
+            <label for="genre_femme">Femme</label>
+            <input type="checkbox" id="genre_homme" name="genre" value="homme">
+            <label for="genre_homme">Homme</label>
+            <input type="checkbox" id="genre_mixte" name="genre" value="mixte">
+            <label for="genre_mixte">Mixte</label>
+        </div>
     </div>
+    
 
     <main>
         <div class="product-list">
@@ -73,5 +86,112 @@
         <p>&copy; 2023 Boutique de Parfums</p>
         <p>Contactez-nous: email@example.com</p>
     </footer>
+
+
+    <!-- Script pour trier par prix, nouveautées.... -->
+    <script>
+        // Sélectionnez le sélecteur de tri
+        const filterSelect = document.getElementById('filter');
+
+        // Sélectionnez la liste des produits
+        const productList = document.querySelector('.product-list');
+
+        // Écoutez les changements de sélection dans le sélecteur
+        filterSelect.addEventListener('change', () => {
+            // Obtenez la valeur sélectionnée dans le sélecteur
+            const selectedValue = filterSelect.value;
+
+            // Obtenez tous les produits
+            const products = Array.from(productList.querySelectorAll('.product'));
+
+            // Triez les produits en fonction de la valeur sélectionnée
+            if (selectedValue === 'price_asc') {
+                products.sort((a, b) => {
+                    const priceA = parseInt(a.getAttribute('prix'));
+                    const priceB = parseInt(b.getAttribute('prix'));
+                    return priceA - priceB;
+                });
+            } else if (selectedValue === 'price_desc') {
+                products.sort((a, b) => {
+                    const priceA = parseInt(a.getAttribute('prix'));
+                    const priceB = parseInt(b.getAttribute('prix'));
+                    return priceB - priceA;
+                });
+            } else if (selectedValue === 'default') {
+                // Laissez les produits dans leur ordre d'origine (par défaut)
+            }
+
+            // Supprimez tous les produits de la liste
+            while (productList.firstChild) {
+                productList.removeChild(productList.firstChild);
+            }
+
+            // Ajoutez les produits triés à la liste
+            products.forEach(product => {
+                productList.appendChild(product);
+            });
+        });
+
+    </script>
+
+    <!-- Script pour selectionner un genre -->
+    <script>
+
+
+        // Sélectionnez les cases à cocher de genre
+    const femmeCheckbox = document.getElementById('genre_femme');
+    const hommeCheckbox = document.getElementById('genre_homme');
+    const mixteCheckbox = document.getElementById('genre_mixte');
+
+    // Sélectionnez la liste des produits en utilisant let au lieu de const
+    let produitss = document.querySelector('.product-list');
+
+    // Fonction pour filtrer les produits en fonction du genre sélectionné
+    function filterProducts() {
+        // Obtenez tous les produits
+        const products = Array.from(produitss.querySelectorAll('.product'));
+
+        // Obtenez les états des cases à cocher
+        const femmeSelected = femmeCheckbox.checked;
+        const hommeSelected = hommeCheckbox.checked;
+        const mixteSelected = mixteCheckbox.checked;
+
+        // Vérifiez si aucune case à cocher n'est cochée
+        if (!femmeSelected && !hommeSelected && !mixteSelected) {
+            // Si aucune case n'est cochée, affichez tous les produits
+            products.forEach(product => {
+                product.style.display = 'block';
+            });
+        } else {
+            // Affichez les produits en fonction du genre sélectionné
+            products.forEach(product => {
+                const genre = product.getAttribute('sex');
+                const isVisible =
+                    (femmeSelected && genre === 'femme') ||
+                    (hommeSelected && genre === 'homme') ||
+                    (mixteSelected && genre === 'mixte');
+
+                // Affichez ou masquez le produit en fonction du genre
+                if (isVisible) {
+                    product.style.display = 'block';
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+        }
+    }
+
+    // Écoutez les changements dans les cases à cocher
+    femmeCheckbox.addEventListener('change', filterProducts);
+    hommeCheckbox.addEventListener('change', filterProducts);
+    mixteCheckbox.addEventListener('change', filterProducts);
+
+    // Appelez la fonction initiale pour afficher les produits par défaut
+    filterProducts();
+
+
+    </script>
+
+
 </body>
 </html>

@@ -46,6 +46,23 @@ header p {
     font-style: italic;
 }
 
+/* Style du sélecteur de tri */
+.filter-bar select {
+    padding: 10px; /* Ajoutez un peu de rembourrage pour le rendre plus convivial */
+    font-size: 16px; /* Taille de police */
+    border: 1px solid #ccc; /* Bordure */
+    border-radius: 5px; /* Coins arrondis */
+    background-color: #fff; /* Couleur de fond */
+    color: #333; /* Couleur du texte */
+    cursor: pointer; /* Curseur de type pointeur au survol */
+    transition: border-color 0.3s ease; /* Transition pour l'effet de survol */
+}
+
+/* Style du sélecteur de tri au survol */
+.filter-bar select:hover {
+    border-color: #666; /* Changement de couleur de la bordure au survol */
+}
+
 
 /* Barre de filtre */
 .filter-bar {
