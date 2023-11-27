@@ -1,14 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Parfums Gaylor</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <!-- <link rel='stylesheet' type='text/css' media='screen' href='main.css'> -->
-    <!-- <script src='main.js'></script> -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boutique de Parfums</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Parfums Gaylor</h1>
+    <header>
+        <h1>Boutique de Parfums</h1>
+        <div class="filter-bar">
+            <label for="filter">Filtrer par:</label>
+            <select id="filter">
+                <option value="price_asc">Prix: Croissant</option>
+                <option value="price_desc">Prix: Décroissant</option>
+                <!-- Autres options de filtrage -->
+            </select>
+        </div>
+    </header>
+
+    <main>
+        <div class="product-list">
+            <!-- Exemple de produit -->
+            <div class="product">
+                <img src="parfum1.jpg" alt="Nom du Parfum">
+                <h2>Désilution par Fildrong</h2>
+                <p>Prix: 80€</p>
+            </div>
+            <div class="product">
+                <img src="parfum2.jpg" alt="Nom du Parfum">
+                <h2>Le bien par Jean Hugues Lemal</h2>
+                <p>Prix: 80€</p>
+            </div>
+            <div class="product">
+                <img src="parfum3.jpg" alt="Nom du Parfum">
+                <h2>Cock par Chad Lapoule</h2>
+                <p>Prix: 80€</p>
+            </div>
+            <div class="product">
+                <img src="parfum4.jpg" alt="Nom du Parfum">
+                <h2>La Puta par Mia Ducargo</h2>
+                <p>Prix: 80€</p>
+            </div>
+            <!-- Répéter pour chaque parfum -->
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Boutique de Parfums</p>
+        <p>Contactez-nous: email@example.com</p>
+    </footer>
 </body>
 </html>
