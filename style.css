@@ -1,27 +1,56 @@
 /* Style de base */
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f5f5f5;
+    background-color: #f0f0f8; /* Couleur de fond légèrement bleutée */
+    color: #333;
     margin: 0;
     padding: 0;
     line-height: 1.6;
 }
 
 /* En-tête */
+/* En-tête avec flexbox pour alignement vertical */
+/* En-tête avec flexbox pour alignement vertical */
 header {
     background-color: #fff;
     padding: 1em 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* Style du logo pour le rendre rond */
+.logo {
+    position: absolute;
+    left: 25px;
+    top: 50%;
+    transform: translateY(-50%);
+    max-width: 100px;
+    border-radius: 50%;
+}
+
+/* Conteneur pour le titre et la description */
+.header-content {
     text-align: center;
 }
 
+/* Styles pour le titre et la description */
 header h1 {
     margin: 0;
     color: #333;
 }
 
+header p {
+    color: #666;
+    font-style: italic;
+}
+
+
 /* Barre de filtre */
 .filter-bar {
-    margin-top: 1em;
+    background-color: #e2e2e2; /* Couleur de fond pour la barre de filtre */
+    padding: 1em;
     text-align: center;
 }
 
@@ -40,7 +69,8 @@ header h1 {
 /* Cartes de produits */
 .product {
     background-color: #ffffff;
-    border: 1px solid #ddd;
+    border-radius: 8px; /* Coins arrondis */
+    border: 1px solid #ccc;
     margin-bottom: 1em;
     padding: 1em;
     text-align: center;
@@ -85,9 +115,7 @@ footer p {
     .product {
         flex-basis: 100%;
     }
-}
 
-@media (max-width: 480px) {
     .filter-bar select {
         width: 100%;
     }
